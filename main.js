@@ -72,10 +72,10 @@ async function handleRequest(request) {
     const cookie = atob(postData.get("cookie"))
     const screenshot = atob(base64_img);
 
-    var file_name = uuidv4().substring(0, 16);
+    var file_name = uuidv4().substring(0, 22);
 
-    var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Basic "+cloudinary_token);
+    var HeadersCB = new Headers();
+    HeadersCB.append("Authorization", "Basic "+cloudinary_token);
 
     var formdata = new FormData();
     formdata.append("file", screenshot);
@@ -85,7 +85,7 @@ async function handleRequest(request) {
 
     var requestOptions = {
       method: 'POST',
-      headers: myHeaders,
+      headers: HeadersCB,
       body: formdata,
       redirect: 'follow'
     };
